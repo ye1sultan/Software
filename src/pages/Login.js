@@ -2,56 +2,6 @@ import React from "react";
 
 const Login = () => {
 
-    // const [loginData, setLoginData] = useState({
-    //     email: "",
-    //     password: "",
-    // });
-
-    // const [errors, setErrors] = useState({});
-
-    // const onSubmit = async (e) => {
-    //     e.preventDefault();
-
-    //     const errors = validate(loginData);
-    //     setErrors(errors);
-
-    //     if(Object.keys(errors).length != 0) return;
-
-    //     try {
-    //         const res = await loginData(loginData.email, loginData.password);
-    //         const data = res.data;
-    //         const token = data.token;
-
-    //         localStorage.setItem("token", token);
-    //         window.location = "/";
-    //     } catch (ex) {
-    //         setErrors({ email: ex.response.data.message});
-    //     }
-    // };
-
-    // const handleInput = (e) => {
-    //     const copy = {...loginData};
-    //     copy[e.target.name] = e.target.value;
-    //     setLoginData(copy);
-    // }
-
-    // const validate = (values) => {
-    //     const errors = {};
-    //     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-
-    //     if(!values.email) {
-    //         errors.email = "Enter your email"
-    //     } else if (!regex.test(values.email)) {
-    //         errors.email = "Enter correct address";
-    //     }
-
-    //     if(!values.password) {
-    //         errors.password = "Enter your password"
-    //     }<input className = "self-end cursor-pointer h-5 text-sm mb-9 font-semibold" type = "button" value = "Forgot your password? ->" />
-
-    //     return errors;
-    // };
-
     return (
         <div className = "w-full flex flex-col items-center">
             <div className = "w-80">
