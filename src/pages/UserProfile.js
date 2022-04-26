@@ -8,7 +8,6 @@ const UserProfile = () => {
                 <h1 className = "text-4xl self-start mt-24 mb-6">
                     My Profile
                 </h1>
-
                 <div className = "flex flex-row mb-5">
                     <img className = "rounded-full w-16 mr-5" src = {Avatar} alt = "Profile" />
                     <div className = "flex flex-col justify-center">
@@ -20,7 +19,6 @@ const UserProfile = () => {
                         </h4>   
                     </div>
                 </div>
-
                 <div className = "flex flex-col mb-60">
                     <div className = "flex flex-row justify-between items-center border-black/5 border-y h-16">
                         <div className = "flex flex-col items-start">
@@ -37,7 +35,6 @@ const UserProfile = () => {
                             </svg>
                         </button>
                     </div>
-
                     <div className = "flex flex-row justify-between items-center border-black/5 border-b h-16">
                         <div className = "flex flex-col items-start">
                             <div className = "text-base text-[#222222]">
@@ -53,7 +50,6 @@ const UserProfile = () => {
                             </svg>
                         </button>
                     </div>
-
                     <div className = "flex flex-row justify-between items-center border-black/5 border-b h-16">
                         <div className = "flex flex-col items-start">
                             <div className = "text-base text-[#222222]">
@@ -70,7 +66,6 @@ const UserProfile = () => {
                         </button>
                     </div>
                 </div>
-
                 <button className = "w-full cursor-pointer h-10 bg-[#05C46B] text-white rounded-md text-base ">
                     SCAN QR-CODE
                 </button>
