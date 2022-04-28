@@ -5,7 +5,7 @@ import Input from "../components/Input";
 
 const ForgotPassword = () => {
     return (
-        <div className="w-full flex flex-col items-center">
+        <div className="w-full flex flex-col items-center font-press-start">
             <div className="w-80">
                 <PageTitle title={"Forgot password"}/>
                 <form className = "flex flex-col justify-center items-center mt-16">

@@ -5,7 +5,7 @@ import PageTitle from "../components/PageTitle";
 
 const UserProfile = () => {
     return (
-        <div className = "w-full flex flex-col items-center">
+        <div className = "w-full flex flex-col items-center font-press-start">
             <div className = "w-80">
             <PageTitle title={"User Profile"}/>
                 <div className = "flex flex-row mt-6 mb-5">
