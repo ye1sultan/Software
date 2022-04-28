@@ -1,16 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import {Link} from 'react-router-dom';
 import PageTitle from "../components/PageTitle";
 import Input from "../components/Input";
 
 const Login = () => {
+    const [loginData, setLoginData] = useState({
+        id: 0,
+        password: "",
+    });
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        console.log(loginData.id, loginData.password);
+    };
+
+    const handleInput = (e) => {
+        const copy = { ...loginData };
+        copy[e.target.name] = e.target.value;
+        setLoginData(copy);
+    };
+
     return (
         <div className = "w-full flex flex-col items-center">
             <div className = "w-80">
                 <PageTitle title={"Login"}/>
-                <form className = "flex flex-col justify-center items-center mt-16">
-                    <Input name={"email"} type={"email"} placeholder={"Email"} />
-                    <Input name={"password"} type={"password"} placeholder={"Password"} />
+                <form onSubmit={(e) => handleSubmit(e)} className = "flex flex-col justify-center items-center mt-16">
+                    <Input onChange={handleInput} value={loginData.id} name={"id"} type={"number"} placeholder={"ID"} />
+                    <Input onChange={handleInput} value={loginData.password} name={"password"} type={"password"} placeholder={"Password"} />
                     <Link to="/forgot-password" className = "self-end cursor-pointer h-5 text-sm mb-9 font-semibold ">
                         <div className = "flex flex-row justify-center items-center">
                             <div className = "mr-3">
@@ -23,9 +40,6 @@ const Login = () => {
                     </Link>
                     
                     <input className = "w-full cursor-pointer h-10 bg-[#05C46B] text-white rounded-md text-base" type = "submit" value = "LOGIN"/>
-                    {/* <Link to="/user-profile" className="flex items-center justify-center w-full cursor-pointer h-10 bg-[#05C46B] text-white rounded-md text-base">
-                        LOGIN
-                    </Link> */}
                 </form>
             </div>
         </div>

@@ -15,6 +15,7 @@ const Settings = () => {
                     <button className = "text-base underline font-semibold">
                         Change profile photo
                     </button>
+
                 </div>
                 <div className = "flex flex-col">
                     <div className = "flex flex-row justify-between items-center border-black/5 border-y h-16">
