@@ -3,12 +3,22 @@ import PrevPage from '../components/PrevousPage';
 import Employee from "../components/Employee";
 import PageTitle from "../components/PageTitle";
 
-const Settings = () => {
+const Employees = () => {
     return (
         <div className="w-full flex flex-col items-center font-press-start">
             <div className="w-80">
             <PageTitle title={"Employees"}/>
                 <div className = "h-96 flex flex-col overflow-y-auto border-black/5 border-t mt-16">
+                <Employee />
+                    <Employee />
+                    <Employee />
+                    <Employee />
+                    <Employee />
+                    <Employee />
+                    <Employee />
+                    <Employee />
+                    <Employee />
+                    <Employee />
                     <Employee />
                 </div>
                 <PrevPage />
@@ -17,4 +27,4 @@ const Settings = () => {
     );
 };
 
-export default Settings;
+export default Employees;

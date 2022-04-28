@@ -4,7 +4,7 @@ import Employees from "./pages/Employees";
 import ForgotPassword from './pages/ForgotPassword';
 import GateRecords from './pages/GateRecords';
 import Login from './pages/Login';
-import MyInformation from "./pages/MyInformation";
+import UserInformation from './pages/UserInformation';
 import QrCode from './pages/QrCode';
 import Settings from './pages/Settings';
 import UserProfile from './pages/UserProfile';
@@ -18,7 +18,7 @@ function App() {
             <Route index path='/login' element={<Login />} />
             <Route path='/user-profile' element={<UserProfile />} />
             <Route path='/qr-code' element={<QrCode />} />
-            <Route path='/my-information' element={<MyInformation />} />
+            <Route path='/user-information' element={<UserInformation />} />
             <Route path='/gate-records' element={<GateRecords />} />
             <Route path='/employees' element={<Employees />} />
             <Route path='/settings' element={<Settings />} />

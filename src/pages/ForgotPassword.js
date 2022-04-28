@@ -3,7 +3,11 @@ import PrevPage from '../components/PrevousPage';
 import PageTitle from "../components/PageTitle";
 import Input from "../components/Input";
 
-const ForgotPassword = () => {
+const ForgotPassword = ({}) => {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+    };
+
     return (
         <div className="w-full flex flex-col items-center font-press-start">
             <div className="w-80">
