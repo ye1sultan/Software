@@ -1,8 +1,13 @@
-import React from "react";
+import { React } from "react";
 import PrevPage from '../components/PrevousPage';
 import PageTitle from "../components/PageTitle";
 
 const QrCode = () => {
+    if(!localStorage.hasOwnProperty('token')) {
+        localStorage.removeItem("token");
+        window.location = '/login';
+    }
+
     return (
         <div className="w-full flex flex-col items-center font-press-start">
             <div className="w-80">

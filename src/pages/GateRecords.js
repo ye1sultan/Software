@@ -1,32 +1,71 @@
-import React from "react";
-import Avatar from '../assets/Avatar.jpg';
+import { React, useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import PrevPage from '../components/PrevousPage';
-import GateRecord from '../components/GateRecord';
 import PageTitle from "../components/PageTitle";
+import User from "../components/User";
+import '../assets/scrollbar.css';
 
 const GateRecords = () => {
+    if(!localStorage.hasOwnProperty('token')) {
+        localStorage.removeItem("token");
+        window.location = '/login';
+    }
+
+    const location = useLocation();
+    const state = location.state;
+    const data = state;
+
+    const url = process.env.REACT_APP_API_KEY + '/records';
+    const token = localStorage.getItem('token');
+    const contentType = 'Bearer ';
+
+    const [records, setRecords] = useState({});
+    
+    useEffect(() => {
+        fetch(url, {
+                method: 'GET',
+                headers: { 'Authorization': contentType + token }
+                })
+            .then(response => response.json())
+            .then(data => {
+                setRecords(data.records);
+            });
+    }, [url, token]);
+
+    let recordsList = [];
+    Array.from(records).forEach((element, index) => {
+        recordsList.push(
+            <div key={index} className = "flex flex-row justify-between items-center border-black/5 border-b h-12 gap-4 py-4">
+                <div className = "text-base mr-7">
+                    {
+                        element.entry_time.slice(0, 11).replaceAll('-', '/')
+
+                    }
+                </div>
+                <div className="flex flex-row justify-end w-full mr-10">
+                    <div className = "text-base mr-10">
+                        {element.entry_time.slice(11, 16)}
+                    </div>
+                    <div className = "text-base ">
+                        {element.exit_time.slice(11, 16)}
+                    </div>
+                </div>
+            </div>
+        );
+    });
+
     return (
         <div className = "w-full flex flex-col items-center font-press-start">
             <div className = "w-80">
-            <PageTitle  title={"Gate Records"}/>
-                <div className = "flex flex-row mb-5 mt-16">
-                    <img className = "rounded-full w-16 mr-5" src = {Avatar} alt = "Profile" />
-                    <div className = "flex flex-col justify-center">
-                        <h3 className = "text-lg text-[#222222]">
-                            Ismagambetova Dinara 
-                        </h3>
-                        <h4 className = "text-sm text-[#828282]">
-                            Admin
-                        </h4>   
-                    </div>
-                </div>
+                <PageTitle  title={"Gate Records"}/>
+                <User name={data.name} role={data.role.name} avatar={data.image}/>
                 <div className = "h-96 flex flex-col overflow-y-scroll ">
                     <div className = "flex flex-row justify-between items-center border-black/5 border-y h-12 gap-4 py-4">
                         <div className = "text-base mr-7">
                             Date
                         </div>
                         <div className="flex flex-row justify-end w-full mr-6">
-                            <div className = "text-base mr-3">
+                            <div className = "text-base mr-4">
                                 Entry time
                             </div>
                             <div className = "text-base">
@@ -34,9 +73,7 @@ const GateRecords = () => {
                             </div>
                         </div>
                     </div>
-                    <GateRecord />
-                    <GateRecord />
-                    <GateRecord />
+                    {recordsList}
                 </div>
                 <PrevPage />
             </div>
