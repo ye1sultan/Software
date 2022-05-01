@@ -25,7 +25,6 @@ const Scanner = () => {
                     let res = await fetch(url + data, {
                         method: 'GET',
                         headers: { 'Authorization': contentType + token },
-                        signal: signal
                     });
 
                     let obj = await res.json();
@@ -41,8 +40,6 @@ const Scanner = () => {
                 
             } catch (error) {
                 console.log(error);
-                controller.abort();
-                return;
             }
         }
     }
