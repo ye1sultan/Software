@@ -22,7 +22,7 @@ const Scanner = () => {
             try {
                 console.log(response);
                 if(response === "No response"){
-                    let res = await fetch(url + "cXBKGB5HT21iIbK", {
+                    let res = await fetch(url + data, {
                         method: 'GET',
                         headers: { 'Authorization': contentType + token },
                         signal: signal
