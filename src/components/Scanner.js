@@ -1,32 +1,48 @@
 import React, { useState } from "react";
 import {QrReader} from 'react-qr-reader';
 import { useNavigate, useLocation } from "react-router-dom";
+import adapter from 'webrtc-adapter';
 
 const Scanner = () => {
     const url = process.env.REACT_APP_API_KEY + '/qr/';
     const token = localStorage.getItem('token');
     const contentType = 'Bearer ';
 
-    const [response, setResponse] = useState('No Result');
+    const [response, setResponse] = useState("No response");
     const navigate = useNavigate();
 
+    const location = useLocation();
+    const state = location.state;
+
+    const controller = new AbortController();
+    const signal = controller.signal;
+    
     const onScan = async (data) => {
         if(!!data) {
             try {
-                let res = await fetch(url + "WSTZtiZfP7VEl5w", {
-                    method: 'GET',
-                    headers: { 'Authorization': contentType + token }
-                });
+                console.log(response);
+                if(response === "No response"){
+                    let res = await fetch(url + "cXBKGB5HT21iIbK", {
+                        method: 'GET',
+                        headers: { 'Authorization': contentType + token },
+                        signal: signal
+                    });
 
-                let obj = await res.json();
-                
-                if(res.status === 200) {
-                    document.getElementById('video').pause();
-                    console.log(obj);
-                    navigate('/gate-records', {state: obj});
+                    let obj = await res.json();
+                    
+                    if(res.status === 200) {
+                        console.log(obj);
+                        setResponse("Success!")
+                        navigate('/gate-records', {state: obj});
+                    } else {
+                        navigate('/user-profile', {state: state});
+                    }
                 }
+                
             } catch (error) {
                 console.log(error);
+                controller.abort();
+                return;
             }
         }
     }
@@ -48,6 +64,7 @@ const Scanner = () => {
                 constraints={{
                     facingMode: 'environment'
                 }}
+                scanDelay={500}
             />
 
         </div>
