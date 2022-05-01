@@ -13,7 +13,6 @@ const GateRecords = () => {
 
     const location = useLocation();
     const state = location.state;
-    const data = state;
 
     const url = process.env.REACT_APP_API_KEY + '/records';
     const token = localStorage.getItem('token');
@@ -58,7 +57,10 @@ const GateRecords = () => {
         <div className = "w-full flex flex-col items-center font-press-start">
             <div className = "w-80">
                 <PageTitle  title={"Gate Records"}/>
-                <User name={data.name} role={data.role.name} avatar={data.image}/>
+                <User 
+                    name={localStorage.getItem('name')} 
+                    role={localStorage.getItem('role')} 
+                    avatar={localStorage.getItem('avatar')}/>
                 <div className = "h-96 flex flex-col overflow-y-scroll ">
                     <div className = "flex flex-row justify-between items-center border-black/5 border-y h-12 gap-4 py-4">
                         <div className = "text-base mr-7">

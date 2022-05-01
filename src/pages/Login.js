@@ -27,6 +27,11 @@ const Login = () => {
 
                 const token = data.token;
                 localStorage.setItem('token', token);
+                
+                localStorage.setItem('name', data.info.name);
+                localStorage.setItem('role', data.info.role.name);
+                localStorage.setItem('avatar', data.info.image);
+
                 navigate('/user-profile', {state: data.info})
             } else {
                 console.log('Some error occured');
